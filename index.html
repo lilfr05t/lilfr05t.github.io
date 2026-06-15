@@ -3,49 +3,319 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Enzo Fabrizio Lopez Padilla</title>
+    <title>Enzo Fabrizio Lopez Padilla — Software Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
     <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0 auto; max-width: 800px; padding: 20px; color: #333; }
-        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
-        h2 { color: #2980b9; margin-top: 30px; }
-        a { color: #3498db; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .project { margin-bottom: 20px; }
+        /* ─── Reset & Base ─────────────────────────────────── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg:        #FAFAFA;
+            --surface:   #FFFFFF;
+            --border:    #E5E7EB;
+            --text:      #111827;
+            --muted:     #6B7280;
+            --accent:    #5B4CFF;
+            --accent-lt: #EEF0FF;
+            --font-head: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --radius:    10px;
+            --shadow:    0 1px 4px rgba(0,0,0,0.06);
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
+            font-size: 15px;
+            line-height: 1.65;
+            padding: 48px 24px 80px;
+        }
+
+        /* ─── Container ─────────────────────────────────────── */
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        /* ─── Header ─────────────────────────────────────────── */
+        header {
+            margin-bottom: 52px;
+            text-align: center;
+        }
+
+        .name {
+            font-family: var(--font-head);
+            font-size: clamp(2rem, 6vw, 3rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--text);
+            line-height: 1.1;
+
+            /* Signature: animated gradient underline */
+            display: inline-block;
+            background: linear-gradient(90deg, var(--accent), #A78BFA, var(--accent));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 4s linear infinite;
+        }
+
+        @keyframes shimmer {
+            from { background-position: 0% center; }
+            to   { background-position: 200% center; }
+        }
+
+        .contact {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px 20px;
+            margin-top: 14px;
+            font-size: 13.5px;
+            color: var(--muted);
+        }
+
+        .contact a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.15s;
+        }
+        .contact a:hover { opacity: 0.7; }
+
+        /* ─── Sections ───────────────────────────────────────── */
+        section {
+            margin-bottom: 44px;
+        }
+
+        .section-label {
+            font-family: var(--font-head);
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* ─── Perfil ─────────────────────────────────────────── */
+        .profile-text {
+            color: #374151;
+            max-width: 78ch;
+            font-size: 15.5px;
+        }
+
+        /* ─── Proyectos ──────────────────────────────────────── */
+        .projects-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
+            border-radius: var(--radius);
+            padding: 20px 22px;
+            box-shadow: var(--shadow);
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(91,76,255,0.10);
+        }
+
+        .card-title {
+            font-family: var(--font-head);
+            font-size: 14.5px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* ─── Habilidades ────────────────────────────────────── */
+        .skills-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .skill-row {
+            display: flex;
+            align-items: baseline;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .skill-category {
+            font-family: var(--font-head);
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--text);
+            min-width: 110px;
+            flex-shrink: 0;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .tag {
+            background: var(--accent-lt);
+            color: var(--accent);
+            font-size: 12.5px;
+            font-weight: 500;
+            padding: 3px 10px;
+            border-radius: 99px;
+            font-family: var(--font-head);
+        }
+
+        /* ─── Educación ──────────────────────────────────────── */
+        .edu-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 18px 22px;
+            box-shadow: var(--shadow);
+        }
+
+        .edu-name {
+            font-family: var(--font-head);
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--text);
+        }
+
+        .edu-detail {
+            font-size: 13.5px;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        /* ─── Responsive ─────────────────────────────────────── */
+        @media (max-width: 500px) {
+            .skill-category { min-width: 100%; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .name { animation: none; }
+            .card { transition: none; }
+        }
     </style>
 </head>
 <body>
+<div class="container">
 
-    <h1>Enzo Fabrizio Lopez Padilla</h1>
-    <p><strong>Ubicación:</strong> Lima, Perú | <strong>Email:</strong> zopezlla@gmail.com | <strong>GitHub:</strong> <a href="https://github.com/lilfr05t">lilfr05t</a></p>
+    <!-- Header -->
+    <header>
+        <h1 class="name">Enzo Fabrizio Lopez Padilla</h1>
+        <div class="contact">
+            <span>Lima, Perú</span>
+            <a href="mailto:zopezlla@gmail.com">zopezlla@gmail.com</a>
+            <a href="https://github.com/lilfr05t" target="_blank" rel="noopener">github.com/lilfr05t</a>
+        </div>
+    </header>
 
-    <h2>👨‍💻 Perfil Profesional</h2>
-    <p>Estudiante de Ingeniería de Software con un enfoque riguroso en la arquitectura de sistemas y el desarrollo fullstack. Mi filosofía de desarrollo prioriza la ingeniería sólida sobre la simple generación de código. Cuento con una fuerte capacidad analítica para el troubleshooting, resolviendo desde la inversión de ejes en interfaces en Python hasta la estabilización de circuitos lógicos físicos.</p>
+    <!-- Perfil -->
+    <section>
+        <div class="section-label">Perfil</div>
+        <p class="profile-text">
+            Estudiante de Ingeniería de Software con enfoque riguroso en arquitectura de sistemas y desarrollo fullstack. Mi filosofía prioriza la ingeniería sólida sobre la simple generación de código, con fuerte capacidad analítica para el troubleshooting — desde inversión de ejes en interfaces en Python hasta estabilización de circuitos lógicos físicos. Busco aplicar esta base estructural para construir, validar y desplegar prototipos escalables en entornos de alta exigencia.
+        </p>
+    </section>
+    <!-- Educación -->
+    <section>
+        <div class="section-label">Educación</div>
+        <div class="edu-block">
+            <div class="edu-name">Universidad Nacional Mayor de San Marcos (UNMSM)</div>
+            <div class="edu-detail">Facultad de Ingeniería de Sistemas e Informática — Ingeniería de Software (5° ciclo)</div>
+        </div>
+    </section>
+    <!-- Proyectos -->
+    <section>
+        <div class="section-label">Proyectos Destacados</div>
+        <div class="projects-grid">
 
-    <h2>🚀 Proyectos Destacados</h2>
-    <div class="project">
-        <strong>1. PyGlass Stock | Arquitectura en 3 Capas & Despliegue en la Nube</strong>
-        <p>Sistema fullstack para la gestión de inventario. Implementación de una arquitectura limpia (React, FastAPI, MySQL) y contenedorización con Docker Compose. Despliegue en producción utilizando Render y Clever Cloud.</p>
-    </div>
-    <div class="project">
-        <strong>2. TransPort | Algoritmos de Enrutamiento & Geolocalización</strong>
-        <p>Aplicación Flask para conexión entre pasajeros y conductores. Integración de mapas interactivos con Leaflet.js y desarrollo de la lógica de emparejamiento. Interfaz responsive y seguridad con werkzeug.</p>
-    </div>
-    <div class="project">
-        <strong>3. Laberinto Algorítmico | Diseño de Algoritmos Avanzados</strong>
-        <p>Visualizador interactivo en Pygame. Implementación de algoritmos Dijkstra y A*, superando retos lógicos profundos como la corrección de inversión de ejes espaciales para la interacción del usuario.</p>
-    </div>
+            <div class="card">
+                <div class="card-title">PyGlass Stock — Arquitectura en 3 Capas & Despliegue en la Nube</div>
+                <p class="card-desc">Sistema fullstack de gestión de inventario con arquitectura limpia (React, FastAPI, MySQL) y contenedorización con Docker Compose. Desplegado en producción usando Render y Clever Cloud.</p>
+            </div>
 
-    <h2>🛠 Habilidades Técnicas</h2>
-    <ul>
-        <li><strong>Lenguajes:</strong> Python, Java, JavaScript, TypeScript.</li>
-        <li><strong>Frameworks:</strong> FastAPI, Flask, React, Pygame.</li>
-        <li><strong>Infraestructura y Calidad:</strong> Docker, Render, MySQL, PyTest, Jest, Git, ADRs.</li>
-        <li><strong>Hardware:</strong> Diseño y diagnóstico de circuitos digitales (serie 74LS).</li>
-    </ul>
+            <div class="card">
+                <div class="card-title">TransPort — Algoritmos de Enrutamiento & Geolocalización</div>
+                <p class="card-desc">Aplicación Flask para conexión entre pasajeros y conductores. Integración de mapas interactivos con Leaflet.js, lógica de emparejamiento, interfaz responsive y seguridad con Werkzeug.</p>
+            </div>
 
-    <h2>🎓 Educación</h2>
-    <p><strong>Universidad Nacional Mayor de San Marcos (UNMSM)</strong><br>
-    Facultad de Ingeniería de Sistemas e Informática (FISI) - Ingeniería de Software</p>
+            <div class="card">
+                <div class="card-title">Laberinto Algorítmico — Diseño de Algoritmos </div>
+                <p class="card-desc">Visualizador interactivo en Pygame con implementación de Dijkstra y A*. Resolvió retos lógicos profundos como la corrección de inversión de ejes espaciales para la interacción del usuario.</p>
+            </div>
 
+        </div>
+    </section>
+
+    <!-- Habilidades -->
+    <section>
+        <div class="section-label">Habilidades Técnicas</div>
+        <div class="skills-group">
+            <div class="skill-row">
+                <span class="skill-category">Lenguajes</span>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Java</span>
+                    <span class="tag">JavaScript</span>
+                </div>
+            </div>
+            <div class="skill-row">
+                <span class="skill-category">Frameworks</span>
+                <div class="tags">
+                    <span class="tag">FastAPI</span>
+                    <span class="tag">Flask</span>
+                    <span class="tag">React</span>
+                    <span class="tag">Pygame</span>
+                </div>
+            </div>
+            <div class="skill-row">
+                <span class="skill-category">Infra & Calidad</span>
+                <div class="tags">
+                    <span class="tag">Docker</span>
+                    <span class="tag">MySQL</span>
+                    <span class="tag">PyTest</span>
+                    <span class="tag">Jest</span>
+                    <span class="tag">Git</span>
+                    <span class="tag">Render</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+</div>
 </body>
 </html>
