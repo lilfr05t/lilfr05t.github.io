@@ -155,7 +155,22 @@
             color: var(--muted);
             line-height: 1.6;
         }
+        a.card {
+            display: block;
+            text-decoration: none;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
+            border-radius: var(--radius);
+            padding: 20px 22px;
+            box-shadow: var(--shadow);
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+        }
 
+        a.card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(91,76,255,0.10);
+        }
         /* ─── Habilidades ────────────────────────────────────── */
         .skills-group {
             display: flex;
@@ -245,7 +260,7 @@
     <section>
         <div class="section-label">Perfil</div>
         <p class="profile-text">
-            Estudiante de Ingeniería de Software con enfoque riguroso en arquitectura de sistemas y desarrollo fullstack. Mi filosofía prioriza la ingeniería sólida sobre la simple generación de código, con fuerte capacidad analítica para el troubleshooting. Busco aplicar esta base estructural para construir, validar y desplegar prototipos escalables en entornos de alta exigencia.
+            Estudiante de Ingeniería de Software con enfoque riguroso en arquitectura de sistemas y desarrollo fullstack. Mi filosofía prioriza la ingeniería sólida sobre la simple generación de código, con fuerte capacidad analítica para el troubleshooting — desde inversión de ejes en interfaces en Python hasta estabilización de circuitos lógicos físicos. Busco aplicar esta base estructural para construir, validar y desplegar prototipos escalables en entornos de alta exigencia.
         </p>
     </section>
     <!-- Educación -->
@@ -260,21 +275,19 @@
     <section>
         <div class="section-label">Proyectos Destacados</div>
         <div class="projects-grid">
-
-            <div class="card">
+            <a class="card" href="https://github.com/lilfr05t/PyGlass_Stock" target="_blank" rel="noopener">
                 <div class="card-title">PyGlass Stock — Arquitectura en 3 Capas & Despliegue en la Nube</div>
                 <p class="card-desc">Sistema fullstack de gestión de inventario con arquitectura limpia (React, FastAPI, MySQL) y contenedorización con Docker Compose. Desplegado en producción usando Render y Clever Cloud.</p>
-            </div>
 
-            <div class="card">
+            <a class="card" href="https://github.com/lilfr05t/proyecto_transport" target="_blank" rel="noopener">
                 <div class="card-title">TransPort — Algoritmos de Enrutamiento & Geolocalización</div>
                 <p class="card-desc">Aplicación Flask para conexión entre pasajeros y conductores. Integración de mapas interactivos con Leaflet.js, lógica de emparejamiento, interfaz responsive y seguridad con Werkzeug.</p>
-            </div>
+            </a>
 
-            <div class="card">
+            <a class="card" href="https://github.com/lilfr05t/LaberintoAlgoritmico" target="_blank" rel="noopener">
                 <div class="card-title">Laberinto Algorítmico — Diseño de Algoritmos </div>
                 <p class="card-desc">Visualizador interactivo en Pygame con implementación de Dijkstra y A*. Resolvió retos lógicos profundos como la corrección de inversión de ejes espaciales para la interacción del usuario.</p>
-            </div>
+            </a>
 
         </div>
     </section>
